@@ -18,6 +18,7 @@ func main() {
 	}
 
 	// Set up the main command
+	flag.Usage = usage
 	addCmd := flag.NewFlagSet("add", flag.ExitOnError)
 	showCmd := flag.NewFlagSet("show", flag.ExitOnError)
 	editCmd := flag.NewFlagSet("edit", flag.ExitOnError)
@@ -30,7 +31,7 @@ func main() {
 	showCmd.BoolVar(showTimestamps, "t", false, "Show timestamps (short)")
 
 	if len(os.Args) < 2 {
-		fmt.Println("Expected 'add', 'show', 'edit', or 'delete' subcommands")
+		usage()
 		os.Exit(1)
 	}
 
@@ -59,10 +60,28 @@ func main() {
 		}
 		id := deleteCmd.Arg(0)
 		deleteEntry(id)
+	case "help":
+		usage()
 	default:
-		fmt.Println("Expected 'add', 'show', 'edit', or 'delete' subcommands")
+		fmt.Printf("Unknown command: %s\n", os.Args[1])
+		usage()
 		os.Exit(1)
 	}
+}
+
+func usage() {
+	fmt.Println("Journal CLI - A simple command-line journaling application")
+	fmt.Println("\nUsage:")
+	fmt.Println("  journal-cli <command> [arguments]")
+	fmt.Println("\nThe commands are:")
+	fmt.Println("  add <entry text>          Add a new journal entry")
+	fmt.Println("  show [-id] [-timestamps]  Show journal entries")
+	fmt.Println("  edit <id> <new text>      Edit an existing entry")
+	fmt.Println("  delete <id>               Delete an entry")
+	fmt.Println("  help                      Show this help message")
+	fmt.Println("\nFlags:")
+	fmt.Println("  -id, -i                   Show entry IDs when listing entries")
+	fmt.Println("  -timestamps, -t           Show timestamps when listing entries")
 }
 
 func addEntry(entry string) {

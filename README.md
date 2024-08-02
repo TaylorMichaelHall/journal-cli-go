@@ -4,7 +4,7 @@ A simple command-line journaling application built with Go and SQLite.
 
 ## About
 
-A Go version of [journal-cli](https://github.com/TaylorMichaelHall/journal-cli). Inspired by [jrnl](https://jrnl.sh/), which is a better app you should use if you're interested in journaling in your terminal.
+A Go version of [journal-cli](https://github.com/taylormichaelhall/journal-cli). Inspired by [jrnl](https://jrnl.sh/), which is a better app you should use if you're interested in journaling in your terminal.
 
 ## Features
 
@@ -19,7 +19,6 @@ A Go version of [journal-cli](https://github.com/TaylorMichaelHall/journal-cli).
 ### Prerequisites
 
 - Go 1.16 or higher
-- SQLite3
 
 ### How to build from source
 
