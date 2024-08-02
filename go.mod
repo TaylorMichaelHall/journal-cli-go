@@ -1,4 +1,4 @@
-module journal-cli
+module github.com/taylormichaelhall/journal-cli-go
 
 go 1.22.5
 
